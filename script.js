@@ -11,16 +11,14 @@
 // const inputCadence = document.querySelector('.form__input--cadence');
 // const inputElevation = document.querySelector('.form__input--elevation');
 
-
 // ////////////////////////////////////////
 // ///////// Using the Geolocation API
-
 
 // // navigator.geolocation.getCurrentPosition();
 
 // // navigator.geolocation.getCurrentPosition(): retrieves/set the device's current location.
 // // navigator.geolocation.getCurrentPosition(function() {}, function() {});
-// // The first function is the callback function that will be called on success so whenever 
+// // The first function is the callback function that will be called on success so whenever
 // // the browser successfully get the coordinated of the current position of the user
 
 // // The second callback function is the error callback which is the one that's goona be called
@@ -34,7 +32,6 @@
 //     // const longitude = position.coords.longitude;
 
 //     // console.log(latitude, longitude);
-
 
 //     // Destructuring
 //     const {latitude, longitude} = position.coords;
@@ -54,7 +51,6 @@
 //     console.log('could not get your current position!');
 // });
 
-
 // // const student = {
 // //     name: 'Ali',
 // //     age: 25,
@@ -63,10 +59,8 @@
 
 // // console.log(student.job)
 
-
 // // const {name, job} = student;
 // // console.log(name, job);
-
 
 // // OOP
 
@@ -106,8 +100,6 @@
 // // console.log(jonas);
 // // console.log(zohaib);
 
-
-
 // /*
 //     this --> jonas
 
@@ -117,9 +109,7 @@
 //     year: 1991
 //     greet()
 
-
 //     ---------------
-
 
 //     this --> zohaib
 
@@ -131,7 +121,6 @@
 
 //     ---------------
 
-
 // */
 
 // // 1) Function Declaration
@@ -141,7 +130,6 @@
 
 // //  add(2, 3);
 
-
 // // 2) function Expression
 
 // // const add = function(a , b) {
@@ -149,7 +137,6 @@
 // // }
 
 // // add(2, 3);
-
 
 // // const User = function(userName, password, email) {
 
@@ -159,7 +146,6 @@
 
 // // }
 
-
 // // User.prototype.login = function() {
 // //     console.log(`${this.user} You are login.`);
 // // };
@@ -168,26 +154,19 @@
 // //     console.log('Message has been sent.');
 // // };
 
-
 // // const jonas = new User('jonas', 'dk234', 'hello@jonas.io');
 // // jonas.login();
 // // const marry = new User('marry', 'querty23', 'mary@test.com');
 // // const steven = new User('steven', 'sp8dz23', 'steven@tes.co');
 
-
-
-
-
 // // console.log(jonas);
 // // console.log(marry);
 // // console.log(steven);
 
-
-
 // ///////////////////////////////////////
 // // Coding Challenge #1
 
-// /* 
+// /*
 // 1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
 // 2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
 // 3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console;
@@ -199,16 +178,15 @@
 // GOOD LUCK 😀
 // */
 
-
 // // const Car = function(make, speed) {
 
 // //     this.make = make;
-// //     this.speed = speed; 
+// //     this.speed = speed;
 // // }
 
 // // Car.prototype.accelerate = function() {
 // //     this.speed = this.speed + 10;
-    
+
 // // }
 
 // // Car.prototype.brake = function() {
@@ -225,10 +203,8 @@
 // // mercedes.brake();
 // // console.log(mercedes.speed);
 
-
 // // console.log(bmw);
 // // console.log(mercedes);
-
 
 // // ES6 Classes
 // // Modern way of implementing oop
@@ -251,13 +227,11 @@
 // //     }
 // // }
 
-
 // // const zohaib = new User('zohaib', 'd848', 'zohaib1@gmail.com');
 
 // // console.log(zohaib);
 // // zohaib.login();
 // // zohaib.sendMessage();
-
 
 // // class Hotel {
 // //     constructor(name, rating, rooms,bookings, gym, pool) {
@@ -294,7 +268,6 @@
 
 // //  quay.checkAvailability();
 // //  console.log(quay);
-
 
 // //  // Getters and Setters
 // //  class person {
@@ -335,7 +308,6 @@
 // //     }
 // //  }
 
-
 // //  const john = new person('John', 1995);
 // //  console.log(john);
 
@@ -346,11 +318,10 @@
 // //  john.fullName = 'John Smith';
 // //  console.log(john);
 
-
 // ///////////////////////////////////////
 // // Coding Challenge #1
 
-// /* 
+// /*
 // 1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
 // 2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
 // 3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console;
@@ -362,16 +333,15 @@
 // GOOD LUCK 😀
 // */
 
-
 // // const Car = function(make, speed) {
 
 // //     this.make = make;
-// //     this.speed = speed; 
+// //     this.speed = speed;
 // // }
 
 // // Car.prototype.accelerate = function() {
 // //     this.speed = this.speed + 10;
-    
+
 // // }
 
 // // Car.prototype.brake = function() {
@@ -388,15 +358,13 @@
 // // mercedes.brake();
 // // console.log(mercedes.speed);
 
-
 // // console.log(bmw);
 // // console.log(mercedes);
-
 
 //  ///////////////////////////////////////
 // // Coding Challenge #2
 
-// /* 
+// /*
 // 1. Re-create challenge 1, but this time using an ES6 class;
 // 2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6);
 // 3. Add a setter called 'speedUS' which sets the current speed in mi/h (but converts it to km/h before storing the value, by multiplying the input by 1.6);
@@ -413,7 +381,6 @@
 //         this.speed = speed;
 //     }
 
-
 //     accelerate() {
 //         this.speed = this.speed + 10;
 //     }
@@ -421,7 +388,6 @@
 //     brake() {
 //         this.speed = this.speed - 5;
 //     }
-
 
 //     // Getters
 
@@ -445,7 +411,6 @@
 // console.log(bmw.speedUS);
 // bmw.speedUS = 100;
 // console.log(bmw);
-
 
 // // Inheritance
 
@@ -480,13 +445,10 @@
 // const mj = new Person('Martha Jones', 1990, 'Developer');
 // console.log(mj);
 
-
-
 // const ub = new Athlete('Usain Bolt', 1986, 'Sprinter', 4 , 8);
 // console.log(ub);
 
 // console.log(ub.allowedOlympic);
-
 
 // class Bird {
 //     constructor(name,color) {
@@ -532,51 +494,74 @@
 // console.log(parrot);
 
 class App {
+  // Private fields
 
-    // Private fields
+  // Note: This application actually doesn't need any arguments and so here in this
+  // constructor we don't have any parameters because right now we doesn't need any inputs
+  // into our applications. If we need it then we could add it to the constructor
+  // but in this case that's just not necessary.
+  constructor() {
+    console.log('Hello from App class constructor!');
 
-    // Note: This application actually doesn't need any arguments and so here in this 
-    // constructor we don't have any parameters because right now we doesn't need any inputs
-    // into our applications. If we need it then we could add it to the constructor
-    // but in this case that's just not necessary.
-    constructor() {
-        console.log('Hello from App class constructor!');
+    // This keyword points to object
+    console.log(this);
 
-        // This keyword points to object
-        console.log(this);
+    // Get user current position
+    this.getPosition();
+  }
 
-        // Get user current position
-        this.getPosition();
-    }
+  // Methods
+  getPosition() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          // console.log(position);
+          // console.log(position.coords);
+          // console.log(position.coords.latitude);
+          // console.log(position.coords.longitude);
 
-    // Methods
-    getPosition() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                // console.log(position);
-                // console.log(position.coords);
-                // console.log(position.coords.latitude);
-                // console.log(position.coords.longitude);
+          // Destructuring
+          const { latitude, longitude } = position.coords;
+          console.log(latitude, longitude);
 
-                // Destructuring
-                const {latitude, longitude} = position.coords;
-                console.log(latitude, longitude);
+          // Load map
+          const map = L.map('map').setView([latitude, longitude], 13);
+          console.log(map);
 
-                // Load map
-                const map = L.map('map').setView([latitude, longitude], 13);
-                console.log(map); 
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          }).addTo(map);
 
-                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(map);
-                
-            }, function() {
-                alert('could not get your position');
-            })
+          // Attach event listner to map
+          // User clicks on map
+          map.addEventListener('click', function(e) {
+            // console.log('Clicked on map');
+            // Render workout form
+            // Remove hidden class from form
+            console.log(document.querySelector('form'));
+            form.classList.remove('hidden');
+          });
+        },
+
+        function () {
+          alert('could not get your position');
         }
+      );
     }
-
+  }
 }
+
+
+ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+const form = document.querySelector('.form');
+const containerWorkouts = document.querySelector('.workouts');
+const inputType = document.querySelector('.form__input--type');
+const inputDistance = document.querySelector('.form__input--distance');
+const inputDuration = document.querySelector('.form__input--duration');
+const inputCadence = document.querySelector('.form__input--cadence');
+const inputElevation = document.querySelector('.form__input--elevation');
 
 // Create new object out of App Class
 
