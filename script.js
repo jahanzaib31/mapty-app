@@ -492,6 +492,28 @@
 // console.log(parrot.speak())
 
 // console.log(parrot);
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const form = document.querySelector('.form');
+const containerWorkouts = document.querySelector('.workouts');
+const inputType = document.querySelector('.form__input--type');
+const inputDistance = document.querySelector('.form__input--distance');
+const inputDuration = document.querySelector('.form__input--duration');
+const inputCadence = document.querySelector('.form__input--cadence');
+const inputElevation = document.querySelector('.form__input--elevation');
 
 class App {
   // Private fields
@@ -508,6 +530,17 @@ class App {
 
     // Get user current position
     this.getPosition();
+
+    // When user submit form
+    form.addEventListener('submit', function(e) {
+        // PREVENT FROM PAGE REFRESH
+        e.preventDefault();
+        console.log('Form is submitted');
+        console.log(document.querySelector('.form__input--type').value);
+        console.log(document.querySelector('.form__input--distance').value);
+        console.log(document.querySelector('.form__input--duration').value);
+        console.log(document.querySelector('.form__input--cadence').value);
+    })
   }
 
   // Methods
@@ -535,7 +568,7 @@ class App {
 
           // Attach event listner to map
           // User clicks on map
-          map.addEventListener('click', function(e) {
+          map.addEventListener('click', function (e) {
             // console.log('Clicked on map');
             // Render workout form
             // Remove hidden class from form
@@ -551,17 +584,6 @@ class App {
     }
   }
 }
-
-
- const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-const form = document.querySelector('.form');
-const containerWorkouts = document.querySelector('.workouts');
-const inputType = document.querySelector('.form__input--type');
-const inputDistance = document.querySelector('.form__input--distance');
-const inputDuration = document.querySelector('.form__input--duration');
-const inputCadence = document.querySelector('.form__input--cadence');
-const inputElevation = document.querySelector('.form__input--elevation');
 
 // Create new object out of App Class
 
