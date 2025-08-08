@@ -516,74 +516,82 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 class App {
-  // Private fields
+  #map;
+  #mapEvent;
 
-  // Note: This application actually doesn't need any arguments and so here in this
-  // constructor we don't have any parameters because right now we doesn't need any inputs
-  // into our applications. If we need it then we could add it to the constructor
-  // but in this case that's just not necessary.
   constructor() {
     console.log('Hello from App class constructor!');
-
-    // This keyword points to object
     console.log(this);
-
-    // Get user current position
     this.getPosition();
 
-    // When user submit form
-    form.addEventListener('submit', function(e) {
-        // PREVENT FROM PAGE REFRESH
-        e.preventDefault();
-        console.log('Form is submitted');
-        console.log(document.querySelector('.form__input--type').value);
-        console.log(document.querySelector('.form__input--distance').value);
-        console.log(document.querySelector('.form__input--duration').value);
-        console.log(document.querySelector('.form__input--cadence').value);
-    })
+    // form.addEventListener('submit', function (e) {
+    //   e.preventDefault();
+    //   console.log('Form is submitted');
+    //   console.log(document.querySelector('.form__input--type').value);
+    //   console.log(document.querySelector('.form__input--distance').value);
+    //   console.log(document.querySelector('.form__input--duration').value);
+    //   console.log(document.querySelector('.form__input--cadence').value);
+    // });
+
+    form.addEventListener('submit', this.newWorkout.bind(this));
   }
 
-  // Methods
   getPosition() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        function (position) {
-          // console.log(position);
-          // console.log(position.coords);
-          // console.log(position.coords.latitude);
-          // console.log(position.coords.longitude);
-
-          // Destructuring
-          const { latitude, longitude } = position.coords;
-          console.log(latitude, longitude);
-
-          // Load map
-          const map = L.map('map').setView([latitude, longitude], 13);
-          console.log(map);
-
-          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution:
-              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-          }).addTo(map);
-
-          // Attach event listner to map
-          // User clicks on map
-          map.addEventListener('click', function (e) {
-            // console.log('Clicked on map');
-            // Render workout form
-            // Remove hidden class from form
-            console.log(document.querySelector('form'));
-            form.classList.remove('hidden');
-          });
+        (position) => {
+          this.renderMap(position);
         },
-
-        function () {
-          alert('could not get your position');
+        () => {
+          alert('Could not get your position');
         }
       );
     }
   }
+
+  renderMap(position) {
+    console.log('Render map function!');
+    console.log(position);
+    const { latitude, longitude } = position.coords;
+    console.log(latitude, longitude);
+
+    this.#map = L.map('map').setView([latitude, longitude], 13);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.#map); // ✅ Corrected
+
+    // ✅ Fixed by defining _showForm method
+    this.#map.on('click', this.showForm.bind(this));
+  }
+
+  showForm(mapE) {
+    console.log('Map Event');
+    console.log(mapE);
+    this.#mapEvent = mapE;
+  //  console.log('map clicked');
+  form.classList.remove('hidden');
+
+  // For better UI(user experience)
+  inputDistance.focus();
+  }
+
+
+  newWorkout(e) {
+    console.log('New workout!');
+    e.preventDefault();
+    const type = inputType.value;
+    console.log(type);
+    const distance = inputDistance.value;
+    console.log(distance);
+    const duration = inputDuration.value;
+    console.log(duration);
+    const cadence = inputCadence.value;
+    console.log(cadence);
+  }
 }
+
 
 // Create new object out of App Class
 
@@ -600,3 +608,35 @@ console.log(app);
 
 // const john = new Students('John', 25, 'Developer');
 // console.log(john);
+
+// Function Declaration
+// function sum(a, b) {
+//   console.log(a + b);
+// }
+
+// sum(2, 3);
+
+// Function Expression
+// const sum = function(a, b) {
+//   console.log(a + b); 
+// }
+
+// sum(10, 3);
+
+// Arrow Function
+const sum = (a, b) => {
+  console.log(a + b);
+} 
+
+sum(10, 3);
+
+// const minus = function(x, y) {
+//   return x - y;
+// }
+
+// console.log(minus(10, 5));
+
+const minus = (x, y) => x - y;
+
+
+console.log(minus(10, 2));
