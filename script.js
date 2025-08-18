@@ -515,6 +515,40 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+// Workout Class (parent)
+class Workout {
+  constructor(distance, duration, coords) {
+    this.distance = distance;
+    this.duration = duration;
+    this.coords = coords;
+  }
+}
+
+class Running extends Workout {
+  constructor(distance, duration, coords, cadence) {
+    super(distance, duration, coords);
+
+    this.cadence = cadence;
+  }
+}
+
+class Cycling extends Workout {
+  constructor(distance, duration, coords, elevationGain) {
+    super(distance, duration, coords);
+
+    this.elevationGain = elevationGain;
+  }
+}
+
+// Test
+const run = new Running(5.2, 124, [39, -12], 178);
+console.log('Running Object:');
+console.log(run);
+
+const cyc = new Cycling(27, 95, [39, -12], 523);
+console.log('Cycling Object:');
+console.log(cyc);
+
 class App {
   #map;
   #mapEvent;
@@ -534,12 +568,19 @@ class App {
     // });
 
     form.addEventListener('submit', this.newWorkout.bind(this));
+
+    // Add change event to workout select
+    document
+      .querySelector('.form__input--type')
+      .addEventListener('change', this.toggleElevationField.bind(this));
+
+
   }
 
   getPosition() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
+        position => {
           this.renderMap(position);
         },
         () => {
@@ -570,28 +611,91 @@ class App {
     console.log('Map Event');
     console.log(mapE);
     this.#mapEvent = mapE;
-  //  console.log('map clicked');
-  form.classList.remove('hidden');
+    //  console.log('map clicked');
+    form.classList.remove('hidden');
 
-  // For better UI(user experience)
-  inputDistance.focus();
+    // For better UI(user experience)
+    inputDistance.focus();
   }
-
 
   newWorkout(e) {
     console.log('New workout!');
     e.preventDefault();
     const type = inputType.value;
     console.log(type);
-    const distance = inputDistance.value;
+    const distance = Number(inputDistance.value);
     console.log(distance);
-    const duration = inputDuration.value;
+    const duration = Number(inputDuration.value);
     console.log(duration);
-    const cadence = inputCadence.value;
+    const cadence = Number(inputCadence.value);
     console.log(cadence);
+    const elevation = Number(inputElevation.value);
+    console.log(elevation);
+
+    console.log('map event:');
+    console.log(this.#mapEvent);
+
+    console.log('map event lat lng:');
+    console.log(this.#mapEvent.latlng);
+
+    const { lat, lng } = this.#mapEvent.latlng;
+    console.log('lat', lat);
+    console.log('lng', lng);
+
+    if (type === 'running') {
+      // Create running object
+      const workout = new Running(distance, duration, [lat, lng], cadence);
+      console.log('Workout running object:');
+      console.log(workout);
+    } else if (type === 'cycling') {
+      // Create cycling object
+      const cycling = new Cycling(distance, duration, [lat, lng], elevation);
+      console.log('Workout cycling object:');
+      console.log(cycling);
+    }
+
+    // Hide form + Clear fields 
+    this.hideForm();
+  }
+
+  toggleElevationField (e) {
+
+        console.log('Option changed!');
+        console.log(e);
+        console.log(e.target.value);
+        // console.log(e.target.closest('.form__row'));
+        console.log(
+          document.querySelector('.form__input--cadence').closest('.form__row')
+        );
+
+        console.log(
+          document
+            .querySelector('.form__input--elevation')
+            .closest('.form__row')
+        );
+
+        // Add toggle class to the cadence and elevation
+        document
+          .querySelector('.form__input--cadence')
+          .closest('.form__row')
+          .classList.toggle('form__row--hidden');
+        document
+          .querySelector('.form__input--elevation')
+          .closest('.form__row')
+          .classList.toggle('form__row--hidden');
+      
+  }
+
+  hideForm() {
+    // console.log('Form is hidden');
+    inputDistance.value = '';
+    inputDuration.value = '';
+    inputCadence.value = '';
+    inputElevation.value = '';
+
+    form.classList.add('form__row--hidden');
   }
 }
-
 
 // Create new object out of App Class
 
@@ -618,7 +722,7 @@ console.log(app);
 
 // Function Expression
 // const sum = function(a, b) {
-//   console.log(a + b); 
+//   console.log(a + b);
 // }
 
 // sum(10, 3);
@@ -626,7 +730,7 @@ console.log(app);
 // Arrow Function
 const sum = (a, b) => {
   console.log(a + b);
-} 
+};
 
 sum(10, 3);
 
@@ -637,6 +741,5 @@ sum(10, 3);
 // console.log(minus(10, 5));
 
 const minus = (x, y) => x - y;
-
 
 console.log(minus(10, 2));
